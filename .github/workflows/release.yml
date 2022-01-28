@@ -14,49 +14,49 @@ jobs:
     needs: build
 
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    
-  # Set up operating system
+
+    # Set up operating system
     runs-on: ubuntu-latest
-        
+
     steps:
-   # Set up Python 3.9
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
+      # Set up Python 3.9
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
 
-    # Check-out repository to access contents
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      # Check-out repository to access contents
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-    # Use PSR to make release
-    - name: Python Semantic Release
-      run: |
-          pip install python-semantic-release
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          semantic-release publish
- 
-    # Publish to TestPyPI
-    - uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-        repository_url: https://test.pypi.org/legacy/
-        skip_existing: true
-    
-    # Test install from TestPyPI
-    - name: Test install from TestPyPI
-      run: |
-          pip install \
-          --index-url https://test.pypi.org/simple/ \
-          --extra-index-url https://pypi.org/simple \
-          pycounts_ca
-    
-    # Publish to PyPI
-    - uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
-        skip_existing: true
+    # # Use PSR to make release
+    # - name: Python Semantic Release
+    #   run: |
+    #       pip install python-semantic-release
+    #       git config user.name github-actions
+    #       git config user.email github-actions@github.com
+    #       semantic-release publish
+
+    # # Publish to TestPyPI
+    # - uses: pypa/gh-action-pypi-publish@release/v1
+    #   with:
+    #     user: __token__
+    #     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+    #     repository_url: https://test.pypi.org/legacy/
+    #     skip_existing: true
+
+    # # Test install from TestPyPI
+    # - name: Test install from TestPyPI
+    #   run: |
+    #       pip install \
+    #       --index-url https://test.pypi.org/simple/ \
+    #       --extra-index-url https://pypi.org/simple \
+    #       airpyllution
+
+    # # Publish to PyPI
+    # - uses: pypa/gh-action-pypi-publish@release/v1
+    #   with:
+    #     user: __token__
+    #     password: ${{ secrets.PYPI_API_TOKEN }}
+    #     skip_existing: true

@@ -34,8 +34,11 @@ jobs:
     - name: Install package
       run: poetry install
 
+    - name: Check style
+      run: poetry run flake8 --exclude=docs*
+
     - name: Test with pytest
-      run: poetry run pytest tests/ --cov=pycounts_ca --cov-report=xml
+      run: poetry run pytest tests/ --cov=airpyllution --cov-report=xml
 
 
 # Uncomment once codecov is set up
