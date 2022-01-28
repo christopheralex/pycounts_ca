@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.1 (2022-01-28)
+### Fix
+* Updates readme for contributors ([`9740ed5`](https://github.com/christopheralex/pycounts_ca/commit/9740ed5cd984f94cddbf75146db5da109c6684de))
+
 ## v0.2.0 (2022-01-28)
 ### Feature
 * Adds python semantic release to dependencies and CD ([`0aeb11b`](https://github.com/christopheralex/pycounts_ca/commit/0aeb11b99bfa1bcf3c0ba68d12c5c04ec3f24dce))
