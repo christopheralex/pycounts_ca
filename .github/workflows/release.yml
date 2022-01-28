@@ -10,7 +10,7 @@ on:
 jobs:
   on-success:
 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     # Set up operating system
     runs-on: ubuntu-latest
