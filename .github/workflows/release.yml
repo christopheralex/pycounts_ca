@@ -16,11 +16,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
   # Set up operating system
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: ubuntu-latest
-        python-version: [3.9]
+    runs-on: ubuntu-latest
         
     steps:
    # Set up Python 3.9
